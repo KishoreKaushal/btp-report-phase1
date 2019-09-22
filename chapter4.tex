@@ -66,5 +66,37 @@ During the installation it is expected that DHCP acquisition will fail, since th
     \caption{IPv4 configuration}
 \end{figure}
 
-Kindly refer to the Fig. 4.3 for the IPv4 configuration. 
+Kindly refer to the Fig. 4.3 for the IPv4 configuration.  
+
+Once the installation is finished, the system should reboot.
+
+\section{Installing MAAS packages}
+
+Use the following commands to install some utility packages and maas related packages on maas-controller. Then verify that you are able to connect through ssh from the host.
+
+\begin{itemize}
+    \setlength\itemsep{-1em}
+    \item[\$] sudo apt-get install ssh iptraf htop wget lynx dnsutils
+    \item[\$] sudo apt-get install maas maas-dhcp maas-dns
+\end{itemize}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/4-4.png}
+    \caption{verify internet connectivity}
+\end{figure}
+
+Verify the network connectivity by using the following commands:
+
+\begin{itemize}
+    \setlength\itemsep{-1em}
+    \item[\$] ip addr
+    \item[\$] route -n
+    \item[\$] cat /etc/resolv.conf | tail 
+    \item[\$] dig canonical.com
+    \item[\$] ping google.com 
+\end{itemize}
+
+The results should look similar to Fig. 4.4.
+
 
