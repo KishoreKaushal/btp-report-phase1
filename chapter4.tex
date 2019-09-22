@@ -117,3 +117,57 @@ After setting up the maas superuser open the maas webui and login. You will land
     \caption{MAAS intro page}
 \end{figure}
 
+\section{SSH \& DHCP configuration for MAAS}
+
+Change the default shell of the 'maas' user as shown in the Fig. 4.7.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/4-7.png}
+    \caption{Default shell for maas user}
+\end{figure}
+
+Login to the maas user and generate an ssh key and copy the public key to the host for passwordless ssh authentication. That will enable us to open a ssh session at that virtual machine host without being prompted for a password. Verify that you are able to open an ssh session to the host system from the controller without being asked for the password.
+
+\begin{enumerate}
+    \setlength\itemsep{-1em}
+    \item[\$] sudo su - maas
+    \item[\$] ssh-keygen -t rsa
+    \item[\$] \url{ssh-copy-id} \url{-i} \url{~/.ssh/id_rsa.pub} \url{kaushal@10.128.0.132}
+\end{enumerate}
+
+Verify that maas will be able to control the virtual machines power at the host level. To do that we need to verify that the virsh command is working.
+
+\url{virsh} \url{-c} \url{qemu+ssh://kaushal@10.128.0.132/system} \url{list} \url{--all}
+
+It should list all the virtual machines at the host.
+
+The next thing we need to do is to import the ssh key of maas controller into maas, so that when maas provisions a new node and brings up an image on that node it can inject our ssh key allowing us to remotely access those managed nodes without that we really have no way aside from backdoor and breaking in to access those nodes that we have created.
+
+To do this first create a ssh key by following the above mentioned steps.
+
+Go to the following link: \url{http://10.17.17.200:5240/MAAS/#/intro/user} and upload your ssh key.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/4-8.png}
+    \caption{Uploading the ssh key of maas controller}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/4-9.png}
+    \caption{Provide DHCP}
+\end{figure}
+
+Next we need to configure the DHCP configuration for the maas. To enable MAAS-managed DHCP, under the ‘Subnets’ page select the desired fabric and then VLAN and then under the ‘Take action’ button select 'Provide DHCP'. Refer Fig. 4.9 for DHCP settings.
+
+Finally go to you desired maas controller and verify the status. You should see a lot of green ticks and no red ticks, similar to Fig. 4.10.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/4-10.png}
+    \caption{Provide DHCP}
+\end{figure}
+
+With this our basic configuration of the maas controller is done and in the next chapter we will create some nodes.
