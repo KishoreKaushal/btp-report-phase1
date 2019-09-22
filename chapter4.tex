@@ -70,7 +70,7 @@ Kindly refer to the Fig. 4.3 for the IPv4 configuration.
 
 Once the installation is finished, the system should reboot.
 
-\section{Installing MAAS packages}
+\section{Setup MAAS}
 
 Use the following commands to install some utility packages and maas related packages on maas-controller. Then verify that you are able to connect through ssh from the host.
 
@@ -99,4 +99,21 @@ Verify the network connectivity by using the following commands:
 
 The results should look similar to Fig. 4.4.
 
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/4-5.png}
+    \caption{MAAS initial page}
+\end{figure}
+
+Verify that the following link works: \url{http://10.17.17.200:5240/}. It will open a MAAS interface which looks something similar to Fig. 4.5. Create a super-user by using the following command: 
+
+\$ sudo maas init
+
+After setting up the maas superuser open the maas webui and login. You will land up on the page similar to Fig. 4-6.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/4-6.png}
+    \caption{MAAS intro page}
+\end{figure}
 
