@@ -1,17 +1,34 @@
-\chapter{Review of Prior Works}
+\chapter{MaaS : Metal as a Service}
 
-Survey comes hear
+IaaS customers are given access to servers which can be dedicated or, more often, virtual and free to install the OS and applications of their choice. The customer doesn't host or manage the underlying infrastructure but is able to use the resources as they wish.
 
-\section{Section name}
+As with all 'as a Service' computing models, customers benefit from access to the resources they need without having to invest in expensive hardware upfront, instead they pay monthly and only for what they use.
 
-write ....
+\section{Bare metal cloud}
 
-\section{Conclusion}
+Bare metal cloud is an environment in which physical, dedicated servers can be provisioned to customers with cloud-like ease and speed. Bare metal cloud customers are given access to the entire processing power of individual servers, as well as any storage, networking or other services they require.
 
-This chapter provided details of the some of the existing
-distributed algorithms for constructing a CDS in wireless ad-hoc
-networks. The results of these evaluations are summarized in table
-\ref{table1}. In next chapter, we discuss our distributed
-Algorithm I, for constructing a small backbone in ad-hoc wireless
-network.
+Within a bare metal infrastructure there is \textbf{no multi-tenanting} (sharing of machines) and the servers provisioned are not virtual ones created on top of any hypervisor. 
+
+Customers of bare metal cloud are free to use their dedicated servers in any way they want, including running any OS and applications as well as installing hypervisors to create their own virtual machines if they want. And bare metal cloud is provided as a service.
+
+\section{IaaS vs. MaaS}
+
+\textit{Is there any difference between IaaS and Maas?}
+
+This depends on your view point. Many define IaaS as the provision of virtual resources only. Some include dedicated servers in their definition. In our view, bare metal cloud is the true IaaS whereas virtualised versions are really a form of Platform as a Service (PaaS).
+
+In all scenarios you gain access to a server on which you can install and run you chosen OS and applications. In this sense, IaaS and bare metal cloud are the same.
+
+On a virtual IaaS however, you have no knowledge of or control over the actual infrastructure on which your services are built. The provider has control of these and your services are abstracted from them.
+
+With bare metal cloud on the other hand, you are provisioned full dedicated servers, with no virtualisation or sharing. It's up you how you use these and, in the case of installing a hypervisor, how many virtual machines you run on each.
+
+With bare metal you get control of the full stack, from the tin right up to the user interface, and can optimise utilisation and performance to a granular level, something you simple cannot do in a virtualised environment.
+
+\section{Canonical's MAAS}
+
+\textit{\href{https://maas.io/}{https://maas.io/}}
+
+Metal-as-a-Service (MASS) is a provisioning construct created by Canonical, developers of the Ubuntu Linux-based operating system. MAAS is designed to help facilitate and automate the deployment and dynamic provisioning of hyperscale computing environments such as big data workloads and cloud services.
 
