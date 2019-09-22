@@ -43,6 +43,8 @@
 \newtoks\email
 \newtoks\guide
 
+\newtoks\chapname
+
 \newif\if@fancyhdr
 \DeclareOption{fancyhdr}{\@fancyhdrtrue}
 \DeclareOption{plainhdr}{\@fancyhdrfalse}

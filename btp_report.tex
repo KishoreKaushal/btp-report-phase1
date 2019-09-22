@@ -12,6 +12,7 @@
 % Custom packages
 %\usepackage[first]{datestamp}   % Datestamp on first page of each chapter
 
+\usepackage{fancyhdr}
 \usepackage{hyperref}
 \usepackage{color}
 
@@ -28,6 +29,16 @@
 \email = {111601008@smail.iitpkd.ac.in}
 \guide = {Dr. Sandeep Chandran}
 
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\the\chapname}
+\lhead{Experimental Cloud using Commodity Hardware}
+
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+ 
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{1pt}
 
 \begin{document}
 
