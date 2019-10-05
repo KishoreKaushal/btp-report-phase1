@@ -1,4 +1,4 @@
-\chapname = {MAAS in VENV - II}
+\chapname = {MAAS in VENV - II : Controller}
 
 \chapter{\the\chapname}
 
@@ -161,13 +161,5 @@ Go to the following link: \url{http://10.17.17.200:5240/MAAS/#/intro/user} and u
 \end{figure}
 
 Next we need to configure the DHCP configuration for the maas. To enable MAAS-managed DHCP, under the ‘Subnets’ page select the desired fabric and then VLAN and then under the ‘Take action’ button select 'Provide DHCP'. Refer Fig. 4.9 for DHCP settings.
-
-Finally go to you desired maas controller and verify the status. You should see a lot of green ticks and no red ticks, similar to Fig. 4.10.
-
-\begin{figure}[!ht]
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/4-10.png}
-    \caption{Provide DHCP}
-\end{figure}
 
 With this our basic configuration of the maas controller is done and in the next chapter we will create some nodes.
