@@ -92,7 +92,7 @@ Verify the network connectivity by using the following commands:
     \setlength\itemsep{-1em}
     \item[\$] ip addr
     \item[\$] route -n
-    \item[\$] cat /etc/resolv.conf | tail 
+    \item[\$] cat /run/systemd/resolve/resolv.conf | tail -n 1 
     \item[\$] dig canonical.com
     \item[\$] ping google.com 
 \end{itemize}
