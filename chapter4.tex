@@ -160,17 +160,22 @@ Next we need to configure the DHCP configuration for the maas. To enable MAAS-ma
 
 During the DHCP configuration we need to configure the IP ranges. IP addresses can be reserved by adding one or more reserved ranges to a subnet configuration. There are two types of ranges that can be defined: reserved range and reserved dynamic range.
 
-\textbf{Reserved range} mode operates differently depending on whether the subnet is managed or unmanaged.
-In managed (subnet), MAAS will never assign IP addresses inside this range. They can be used for anything (e.g. infrastructure systems, network hardware, or external DHCP). While in unmanaged (subnet), MAAS will only assign IP addresses inside this range.
+\textbf{Reserved range} mode operates differently depending on whether the subnet is \textbf{managed} or \textbf{unmanaged}. In managed (subnet), MAAS will never assign IP addresses inside this range. They can be used for anything (e.g. infrastructure systems, network hardware, or external DHCP). While in unmanaged (subnet), MAAS will only assign IP addresses inside this range.
 
 A \textbf{Reserved dynamic range} is an IP range that MAAS will use for enlisting, commissioning and, if MAAS-managed DHCP is enabled on the node's VLAN during commissioning, deploying. An initial range is created as part of the DHCP enablement process if done with the web UI. For an unmanaged subnet, this range is never used.
 
-To keep things simple we will use the reserved dynamic range mode.
+To keep things simple we will use the reserved dynamic range mode with managed subnet. By default managed allocation for a subnet is enabled, you can disable it by editing the subnet configuration under the subnet tab and then select the appropriate fabric and then editing the desired subnet.
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.5\textwidth]{images/4-9.png}
     \caption{Provide DHCP}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/4-10.png}
+    \caption{Editing subnet}
 \end{figure}
 
 With this our basic configuration of the maas controller is done and in the next chapter we will create some nodes.
