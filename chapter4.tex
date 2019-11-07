@@ -154,12 +154,23 @@ Go to the following link: \url{http://10.17.17.200:5240/MAAS/#/intro/user} and u
     \caption{Uploading the ssh key of maas controller}
 \end{figure}
 
+Next we need to configure the DHCP configuration for the maas. To enable MAAS-managed DHCP, under the ‘Subnets’ page select the desired fabric and then VLAN.
+
+\subsection{IP Ranges}
+
+During the DHCP configuration we need to configure the IP ranges. IP addresses can be reserved by adding one or more reserved ranges to a subnet configuration. There are two types of ranges that can be defined: reserved range and reserved dynamic range.
+
+\textbf{Reserved range} mode operates differently depending on whether the subnet is managed or unmanaged.
+In managed (subnet), MAAS will never assign IP addresses inside this range. They can be used for anything (e.g. infrastructure systems, network hardware, or external DHCP). While in unmanaged (subnet), MAAS will only assign IP addresses inside this range.
+
+A \textbf{Reserved dynamic range} is an IP range that MAAS will use for enlisting, commissioning and, if MAAS-managed DHCP is enabled on the node's VLAN during commissioning, deploying. An initial range is created as part of the DHCP enablement process if done with the web UI. For an unmanaged subnet, this range is never used.
+
+To keep things simple we will use the reserved dynamic range mode.
+
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.5\textwidth]{images/4-9.png}
     \caption{Provide DHCP}
 \end{figure}
-
-Next we need to configure the DHCP configuration for the maas. To enable MAAS-managed DHCP, under the ‘Subnets’ page select the desired fabric and then VLAN and then under the ‘Take action’ button select 'Provide DHCP'. Refer Fig. 4.9 for DHCP settings.
 
 With this our basic configuration of the maas controller is done and in the next chapter we will create some nodes.
