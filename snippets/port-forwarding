@@ -9,5 +9,15 @@ sudo iptables -A FORWARD -o virbr1 -m state --state RELATED,ESTABLISHED -j ACCEP
 sudo iptables -A FORWARD -i virbr1 -o eno2 -j ACCEPT
 sudo iptables -A FORWARD -i virbr1 -o lo -j ACCEPT
 
+
+# reverse
+sudo iptables -D FORWARD -o virbr1 -d  10.17.17.200 -j ACCEPT
+sudo iptables -t nat -D PREROUTING -p tcp --dport 1500 -j DNAT --to 10.17.17.200:5240
+sudo iptables -D FORWARD -o virbr1 -d  10.17.17.200 -j ACCEPT
+sudo iptables -t nat -D POSTROUTING -s 10.17.17.0/24 -j MASQUERADE
+sudo iptables -D FORWARD -o virbr1 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -D FORWARD -i virbr1 -o eno2 -j ACCEPT
+sudo iptables -D FORWARD -i virbr1 -o lo -j ACCEPT
+
 sudo service netfilter-persistent save
 sudo service netfilter-persistent reload
