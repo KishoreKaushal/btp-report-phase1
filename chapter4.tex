@@ -164,7 +164,7 @@ During the DHCP configuration we need to configure the IP ranges. IP addresses c
 
 A \textbf{Reserved dynamic range} is an IP range that MAAS will use for enlisting, commissioning and, if MAAS-managed DHCP is enabled on the node's VLAN during commissioning, deploying. An initial range is created as part of the DHCP enablement process if done with the web UI. For an unmanaged subnet, this range is never used.
 
-To keep things simple we will use the reserved dynamic range mode with managed subnet. By default managed allocation for a subnet is enabled, you can disable it by editing the subnet configuration under the subnet tab and then select the appropriate fabric and then editing the desired subnet.
+To keep things simple we will use the reserved dynamic range mode with managed subnet. By default, a subnet is managed, but it is easy to change this. To disable (or re-enable) subnet management navigate to the 'Subnets' page and select the subnet. Press the 'Edit' button so that changes can be made. The 'Managed allocation' field will become a slide switch. Click the label (or the switch icon itself) to toggle between enabled (dark blue) and disabled (grey) and click 'Save summary'.
 
 \begin{figure}[!ht]
     \centering
@@ -177,5 +177,9 @@ To keep things simple we will use the reserved dynamic range mode with managed s
     \includegraphics[width=0.5\textwidth]{images/4-10.png}
     \caption{Editing subnet}
 \end{figure}
+
+\section{Images}
+
+
 
 With this our basic configuration of the maas controller is done and in the next chapter we will create some nodes.
