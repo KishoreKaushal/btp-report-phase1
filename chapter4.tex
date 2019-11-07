@@ -168,18 +168,31 @@ To keep things simple we will use the reserved dynamic range mode with managed s
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/4-9.png}
+    \includegraphics[width=0.6\textwidth]{images/4-9.png}
     \caption{Provide DHCP}
 \end{figure}
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/4-10.png}
+    \includegraphics[width=0.6\textwidth]{images/4-10.png}
     \caption{Editing subnet}
 \end{figure}
 
 \section{Images}
 
+MAAS is only useful once it has images available to provision its nodes with. Therefore, one key task once MAAS is installed is to select and import images from the boot source(place from where a region controller downloads its images). MAAS comes configured with a boot source that should suffice for most users:
+
+\url{https://images.maas.io/ephemeral-v3/daily/}
+
+Once images have been imported MAAS will update them on an hourly basis (a sync mechanism is enabled by default).
+
+The 'Images' page shows what images and architectures have been selected and downloaded.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/4-11.png}
+    \caption{Images}
+\end{figure}
 
 
-With this our basic configuration of the maas controller is done and in the next chapter we will create some nodes.
+With this our basic configuration of the maas controller is done and in the next chapter we will create some nodes and add it to the maasisotest network and perform node acquisition.
