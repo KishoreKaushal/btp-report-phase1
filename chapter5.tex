@@ -49,15 +49,22 @@ Once the clones are created, power on all the virtual machines. These machines w
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/5-3.png}
-    \caption{Nodes enlisted themselves and shutdown}
+    \includegraphics[width=0.7\textwidth]{images/5-3.png}
+    \caption{Node enlisting themselves}
 \end{figure}
 
-As soon as they shutdown, we will start confiiguring the power parameters. Before we do that, we need to change the identifications names of the nodes in the maas interface. To do this run the following command in the host:
+\section{Power configurations}
 
-\$ virsh dumpxml node0 | grep mac 
+As soon as they shutdown, we will start configuring the power parameters. Before we do that, we need to change the identifications names of the nodes in the maas interface. 
+By default, the node's hostname according to MAAS is a randomly chosen string(Fig. 5.4).
 
-And then check for the device which has the same mac address in the maas interface and then set the name to node0. In the same way do for the other clones.
+First we need to find the mac address of the interface of a particular node. We can find this in the xml configuration file for the corresponding VM(Fig. 5.5).
+
+\$ virsh dumpxml node0 \textbar grep mac
+
+And then check for the device which has the same mac address in the maas interface and then set the name to node0. In the same way do for the other nodes.
+
+Even though a script can be written to automate this task for the virtual environment case but while operating with the actual hardware there is no other way to completely automate this task.
 
 \begin{figure}[!ht]
     \centering
@@ -65,32 +72,50 @@ And then check for the device which has the same mac address in the maas interfa
     \caption{Change these names to the meaningful names}
 \end{figure}
 
-Refer the Fig. 5.5 for power configuration of node0, likewise you need to configure power parameters for other nodes.
-
-Power type: Virsh
-
-Virsh Address: \url{qemu+ssh://kaushal@10.128.0.132/system}
-
-Virsh VM ID: \url{node0}
-
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.7\textwidth]{images/5-5.png}
-    \caption{Power configuration for node0}
+    \caption{Finding the mac address of each node}
 \end{figure}
 
-Once the power configuration is done select all nodes and commission all of them (fig 5.6). During the commissioning procedure the machine will also go through some hardware testing procedure (fig 5.7).
+Once the names are changed, navigate to the power configuration under the configuration tab for each node and set the power parameters as follows:
+
+Power type: Virsh
+
+Virsh Address: \url{qemu+ssh://<USERNAME>@<IP>/system}
+
+Virsh VM ID: \url{node0}
+
+Where USERNAME is related to the host machine and the IP is the local ip of that host machine. For my case USERNAME is `kaushal' and IP is `10.128.1.220'.
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.7\textwidth]{images/5-6.png}
+    \caption{Power configuration for node0}
+\end{figure}
+
+\section{Commissioning the nodes}
+
+Once the power configuration is done select all nodes and commission all of them (fig 5.7). During the commissioning procedure the machine will also go through some hardware testing procedure (fig 5.8).
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/5-7.png}
     \caption{Commissioning all nodes}
 \end{figure}
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.7\textwidth]{images/5-7.png}
+    \includegraphics[width=0.7\textwidth]{images/5-8.png}
     \caption{Hardware testing phase}
+\end{figure}
+
+Once the commissioning procedure is complete the machines will gracefully shutdown and on the MAAS web interface you will have the basic hardware specification(fig. 5.9).
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/5-9.png}
+    \caption{Hardware information}
 \end{figure}
 
 This is a basic procedure of how to create MAAS nodes and commission them.
